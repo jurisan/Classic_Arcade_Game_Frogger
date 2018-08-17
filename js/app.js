@@ -36,15 +36,13 @@ Enemy.prototype.collisionCheck = function () {
     }
 };
 
-// Draw the enemy on the screen, required method for game
+// Draw the Enemy >:]
 Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-//***********
-//Player class
-//***********
 
+//Create the Player class :)
 class Player {
     constructor() {
         this.x = 200;
@@ -57,13 +55,13 @@ class Player {
 }
 
 
-// used to reset the user position
+// This is to reset Player's position
 Player.prototype.resetPosition = function () {
     this.x = 200;
     this.y = 400;
 };
 
-//used for preventing player from getting out of the boundaries.
+//This is used so the Player remains in game boundaries
 Player.prototype.update = function () {
 
     if (this.y > 380) {
@@ -85,18 +83,18 @@ Player.prototype.update = function () {
     }
 };
 
-//Increase player points
+//This is when the Player acheives a point
 Player.prototype.increasePoint = function () {
     this.point += 3
 };
 
-// Decrease player points
+// This is when the Player loses points
 Player.prototype.decreasePoint = function () {
     this.point -= 1;
     if (this.point < 0)
         this.point = 0
 };
-// Decrease player life
+// This is when the Player loses a life
 Player.prototype.decreaseLife = function () {
     this.life -= 1;
     if (this.life === 0)
@@ -116,13 +114,13 @@ Player.prototype.gameOver = function () {
     player.restartGame()
 };
 
-// Used to reset game. Executed, without user action, after the game is over
+// This is used to reset the game, after the game is over. Regardless of user inp
 Player.prototype.restartGame = function () {
     this.point = 0;
     this.life = 3;
 };
 
-// Draw the player on the screen, required method for game
+// This draws the player on the screen
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.fillStyle = 'white';
@@ -131,7 +129,7 @@ Player.prototype.render = function () {
     ctx.fillText('❤️ ' + this.life, 450, 75);
 };
 
-// handles the user input
+// This is the input handler
 Player.prototype.handleInput = function (keyPress) {
     switch (keyPress) {
         case 'left':
