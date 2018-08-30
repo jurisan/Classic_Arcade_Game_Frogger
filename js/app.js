@@ -153,11 +153,11 @@ let allEnemies = [];
 // the player object in variable
 let player = new Player();
 
-// Y-axis is the position where the enemies are coming from
-let enemyY = [60, 140, 220];
+// Enemy is coming from the left
+let enemyL = [60, 140, 220];
 let enemy;
-enemyY.forEach(function (Y) {
-    enemy = new Enemy(0, Y, Math.random() * 500 + 80);
+enemyL.forEach(function (Y) {
+    enemy = new Enemy(0, Y, Math.random() * 700 + 90);
     allEnemies.push(enemy);
 });
 
