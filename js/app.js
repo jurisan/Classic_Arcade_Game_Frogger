@@ -9,13 +9,13 @@ class Enemy {
     }
 }
 
-// Used to update enemy's position
-// parameter dt is a time delta between ticks
+//Update enemy's position
+// parameter dt = time delta between ticks
 Enemy.prototype.update = function (dt) {
     //multiply enemy x position by dt -  to ensure game runs at same speed for all computers
     this.x += this.speed * dt;
 
-    if (this.x > 520) {
+    if (this.x > 550) {
         this.x = -100;
         this.speed = Math.random() * 500 + 80;
     }
@@ -43,7 +43,7 @@ Enemy.prototype.render = function () {
 
 //the Player, life, and point - player object will hold life and point value
 class Player {
-    constructor() {  
+    constructor() {
         this.x = 200;
         this.y = 400;
         this.position = 50;
@@ -53,7 +53,11 @@ class Player {
     }
 }
 
-
+// Reset player position
+Player.prototype.resetPosition = function () {
+    this.x = 200;
+    this.y = 400;
+};
 
 //Player cannot move off game screen
 Player.prototype.update = function () {
@@ -95,13 +99,6 @@ Player.prototype.decreaseLife = function () {
         player.gameOver()
 };
 
-
-// Reset player position
-Player.prototype.resetPosition = function () {
-    this.x = 200;
-    this.y = 400;
-};
-
 // Life = 0
 Player.prototype.gameOver = function () {
     if (localStorage.getItem('point') == null)
@@ -110,24 +107,24 @@ Player.prototype.gameOver = function () {
         if (localStorage.getItem('point') < this.point)
             localStorage.setItem("point", this.point);
     }
-    alert('Game Over! \n' +
-        'Your Score :' + this.point + '\n' +
-        'High Score :' + localStorage.getItem('point'));
+    alert('Sorry! Game Over ! \n' +
+        'Score : ' + this.point + '\n' +
+        'High Score : ' + localStorage.getItem('point'));
     player.restartGame()
 };
 
-// This is used to reset the game, after the game is over. Regardless of user inp
+// reset game after game over
 Player.prototype.restartGame = function () {
     this.point = 0;
     this.life = 3;
 };
 
-// This draws the player on the screen
+// draw player on screen
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.fillStyle = 'white';
-    ctx.font = "16px Arial";
-    ctx.fillText('💎 ' + this.point, 15, 75);
+    ctx.font = "13px Arial";
+    ctx.fillText('⭐️ ' + this.point, 15, 75);
     ctx.fillText('❤️ ' + this.life, 450, 75);
 };
 
@@ -151,8 +148,9 @@ Player.prototype.handleInput = function(direction) {
 
 // instantiation of player and enemies
 
-
+//enemies in array
 let allEnemies = [];
+// the player object in variable
 let player = new Player();
 
 // Y-axis is the position where the enemies are coming from

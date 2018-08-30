@@ -14,8 +14,8 @@ To open the Game:
 clone the directory and open the index.html in browser.
 
 Rules of the Game:
-Start with 3 lives (Hearts), every successful crossing to the other side of the road will give you 3 diamonds.
-BUT... Each collision will cost you 1 heart life and 1 diamond.
+Start with 3 lives (Hearts), every successful crossing to the other side of the road will give you 3 stars.
+BUT... Each collision will cost you 1 heart life and 1 star.
 Lose 3 hearts/lives and game over!
 
 To Play the Game:
