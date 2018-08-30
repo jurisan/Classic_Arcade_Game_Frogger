@@ -100,6 +100,7 @@ Player.prototype.decreaseLife = function () {
 };
 
 // Life = 0
+//https://developer.mozilla.org/en-US/docs/Web/API/Window/localStoragedt
 Player.prototype.gameOver = function () {
     if (localStorage.getItem('point') == null)
         localStorage.setItem("point", this.point);
@@ -120,6 +121,7 @@ Player.prototype.restartGame = function () {
 };
 
 // draw player on screen
+//https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     ctx.fillStyle = 'white';
